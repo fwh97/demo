@@ -1,0 +1,648 @@
+.go{
+	width: 100px;
+	height: 100px;
+	z-index: 1024;
+	border-radius: 50%;
+	position: fixed;
+	right: 30px;
+	top:30px;
+	animation: more 0.5s linear infinite alternate;
+}
+.more{
+	position: fixed;
+    right: 60px;
+    bottom: 80px;
+    z-index: 1001;
+    animation: more 0.3s linear infinite alternate;
+}
+.content{
+   	width: 900px;
+    height: 600px;
+    /*background: rgba(0, 0, 0, 0.1);*/
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -450px;
+}
+.screen01{
+	background: url("../images/01-bg.png") no-repeat center bottom;
+}
+.screen01 .goods{
+    text-align: center;
+    margin-top:230px;
+}
+.screen01 .sofa{
+    position: absolute;
+    left: 230px;
+    top: 150px;
+    animation: more 0.8s linear infinite alternate;
+}
+.screen01 .fly{
+    position: absolute;
+    right: -50px;
+    top: 20px;
+    /*调用动画*/
+    animation: fly01 1s linear infinite alternate;/*无穷次*//*逆播放*/
+}
+@keyframes fly01 {
+	from { transform: translateY(30px); }
+	to { transform: translateY(-30px); }
+}
+
+@keyframes more {
+	from { transform: translateY(10px); }
+	to { transform: translateY(-10px); }
+}
+
+.screen02 {
+    background: url("../images/02-bg.png") no-repeat center bottom;
+}
+.screen02 .goods{
+    position: absolute;
+    left: 50%;
+    margin-left: -220px;
+    bottom: 210px;
+    transform-origin: left bottom;
+    transform: scale(0);
+}
+.screen02 .sofa{
+    transform: scale(0.5);
+    /*scale 缩放*/
+    position: absolute;
+    left: 292px;
+    top: 132px;
+    opacity: 0;
+    z-index: 1001;
+}
+
+.screen02 .input{
+    position: absolute;
+    right: 171px;
+    top: 120px;
+    /*右上角 transform: scale(0.7);*/
+    /*中心位置 transform: translate(-180px,130px);*/
+    /*最右边的位子  transform: translate(2000px,130px);*/
+    /*默认的转换原点中心 在指定位置开始动画 */
+    transform-origin: right top; 
+    opacity: 0;
+}
+.screen02 .input .search{}
+.screen02 .input .key{
+    position: absolute;
+    left: 100px;
+    top: 4px;
+    opacity: 0;
+}
+.screen02 .text{
+    text-align: center;
+}
+.screen02 .text .text01{}
+.screen02 .text .text02{
+    position: absolute;
+    opacity: 0;
+}
+
+/*第二屏动画*/
+.screen02.now .text .text01{
+    position: absolute;
+    opacity: 0;
+    transition: opacity 5s;
+}
+.screen02.now .text .text02{
+    position: static;
+    opacity: 1;
+    transition: opacity 5s;
+}
+.screen02.now .input{
+    /*动画播放完成状态控制  默认属性backwards(回到起点) forwards(保持)*/
+    animation: input02 3s linear forwards;
+    /*animation:动画名称 花费时间 运动曲线  何时开始  播放次数  是否反方向;*/
+}
+.screen02.now .input .key{
+    opacity: 1;
+    transition: all 1s linear 1s;
+}
+.screen02.now .goods{
+    /*none 清空所有转换属性*/
+    transform: none;
+    transition: all 1s linear 2s;
+}
+/* transition 过渡动画
+transition 属性是一个简写属性，用于设置四个过渡属性：
+transition-property    规定设置过渡效果的 CSS 属性的名称。
+transition-duration    规定完成过渡效果需要多少秒或毫秒。
+transition-timing-function    规定速度效果的速度曲线。
+transition-delay      定义过渡效果何时开始。
+默认值：	all 0 ease 0
+
+1.搜索框在右边动画的出来 */
+/*2.在显示器中间停留  显示关键字*/
+/*3.商品列表动画显示  搜索框动画位移到右上角*/
+/*transform 进行旋转、缩放、移动:translate（x,y）,或倾斜。 */
+@keyframes input02 {
+	0%{	
+		/*每个属性值之后;结束*/
+		opacity: 1;      				
+		transform: translate(2000px,130px); 		
+	}
+	33.3%{
+		transform: translate(-180px,130px);
+	}
+	67%{
+		transform: translate(-180px,130px);
+	}
+	100%{
+		opacity:1;
+		transform: scale(0.6);
+	}
+}
+
+.screen02.leaved .sofa{
+	animation: sofa02 1s linear
+}
+@keyframes sofa02 {
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 1;
+        /*沙发下移*/
+        transform: translate(-80px,700px);
+    }
+}
+.screen03{
+    background: url("../images/03-bg.png") no-repeat center bottom;
+    z-index: 2;
+}
+.screen03 .sofa{
+    position: absolute;
+    left: 212px;
+    top: 180px;
+    display: none;
+}
+.screen03 .change{
+    position: absolute;
+    bottom: 170px;
+    right: 115px;
+}
+.screen03 .change img:last-child{
+    position: absolute;
+    opacity: 0;
+}
+.screen03 .cart{
+    position: absolute;
+    bottom: 100px;
+    right: 192px;
+}
+.screen03 .cart img:last-child{
+    position: absolute;
+    opacity: 0;
+} 
+.screen03.now .change img:first-child {
+    display: none;
+}
+.screen03.now .change img:last-child {
+    opacity: 1;
+    position: static;
+    transition: all 2s linear;
+}
+.screen03.now .cart img:first-child {
+    display: none;
+}
+.screen03.now .cart img:last-child{
+    position: static;
+    opacity: 1;
+    transition: all 2s linear;
+}
+.screen03.now .sofa {
+    z-index: 1024;
+    display: block;
+}
+.screen03.leaved .sofa{
+    /*1.组合写法  多个转换属性之间空格  transform:rotate() translateX() skew() scale()*/
+    /*2.如果你先旋转  那么坐标轴也会旋转*/
+    /*3. 最好是先位移在旋转*/
+    animation: sofa03 1s linear;
+}
+@keyframes sofa03 {
+    from{
+
+    }
+    to{
+        transform: translate(190px,666px) rotate(45deg);
+    }
+}
+
+.screen04{
+    background: url("../images/04-bg.png") no-repeat center bottom;
+}
+.screen04 .cloud{
+    position: absolute;
+    top: -50px;
+    left: -400px;
+    animation: cloud 15s linear infinite alternate;
+}
+@-webkit-keyframes cloud {
+    from {  }
+    to { 
+        transform: translate(1000px);
+     }
+}
+
+.screen04 .text{
+   text-align: center;
+   margin-top: 120px;
+}
+.screen04 .text img:last-child{
+    position: absolute;
+    opacity: 0;
+}
+.screen04 .text.show img:first-child{
+    position: absolute;
+    opacity: 0;
+}
+.screen04 .text.show img:last-child{
+    opacity: 1;
+    position: static;
+    transition: all 1s linear;
+}
+
+.screen04 .address{
+    position: absolute;
+    width: 283px;
+    height: 270px;
+    left: 50%;
+    /*css3的居中 基于本身*/
+    transform: translateX(-50%);
+    bottom: 150px;
+    opacity: 0;
+}
+.screen04 .address img:last-child{
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    /*css3的居中 基于本身*/
+    transform: translateX(-50%);
+    z-index: 1;
+}
+.screen04.now .address{
+    transition: all 0.3s 1.8s;
+    opacity: 1;
+}
+.screen04 .cart{
+    position: relative;
+    z-index: 1024;
+    text-align: center;
+    margin-top: 50px;
+}
+.screen04 .sofa{
+    position: absolute;
+    top: 200px;
+    left: 420px;
+    transform: rotate(45deg);
+    opacity: 0;
+}
+
+.screen04.now .sofa{
+    opacity: 1;
+    transform: translateX(1000px);
+    transition: transform 2s;
+}
+.screen04.now .cart{
+    transition: all 2s;
+    transform: translateX(1000px);
+}
+
+
+.screen05{
+    background: url("../images/05-bg.png") no-repeat;
+    z-index: 2;
+}
+.screen05 .sofa{
+    position: absolute;
+    bottom: 100px;
+    left: 100px;
+    transform: rotate(45deg);
+    z-index: 1001;
+    opacity: 0;
+}
+.screen05 .text{
+    position: absolute;
+    bottom: 550px;
+    left: 0;
+}
+.screen05 .card{
+    position: absolute;
+    left: 0;
+    bottom: 210px;
+    z-index: 1002;
+}
+.screen05 .card .cardImg{
+    position: relative;
+    z-index: 1;
+}
+.screen05 .card .orderImg{
+    position: absolute;
+    left: 130px;
+    top: -80px;
+    transform: translateY(80px);
+}
+.screen05 .content{
+    height: 100%;
+    background: rgba(0,0,0,0.2);
+}
+.screen05 .mouse{
+    position: absolute;
+    right: 0;
+    top: 0;
+    overflow: hidden;
+    height: 100%;
+    width: 400px;
+}
+.screen05 .mouse .hand{
+    position: absolute;
+    bottom: 0;
+    right: 50px;
+    transform: translateY(500px);
+}
+.screen05 .mouse .m1,
+.screen05 .mouse .m2{
+    position: absolute;
+    bottom: 210px;
+    right: 0;
+}
+.screen05 .mouse .m2{
+    opacity: 0;
+}
+.screen05.now  .mouse .hand{
+    transition: all 1s linear;
+    transform: none;
+}
+.screen05.now .mouse .m2{
+    transition: opacity 0.2s linear 1s;
+    opacity: 1;
+}
+.screen05.now .card .orderImg{
+    transition: all 1s linear 2.2s;
+    transform: none;
+}
+.screen05.now .sofa{
+    animation:sofa05 1s linear 1.2s forwards;
+}
+@keyframes sofa05{
+    from{
+        transform: translateY(-1000px) rotate(30deg);
+        opacity: 1;
+    }
+    50%{
+        transform: translateY(-150px) rotate(30deg);
+    }
+    to{
+        transform:rotate(30deg);
+        opacity: 1;
+    }
+}
+.screen05.leaved .sofa{
+    animation: sofa05-6 1s linear;
+}
+@keyframes sofa05-6 {
+    from{
+        opacity: 1;
+        transform: rotate(30deg);
+    }
+    to{
+        transform: translateY(450px) rotate(30deg) scale(.2);
+        opacity: 1;
+    }
+}
+
+
+.screen06 { background: url(../images/06-bg.png) no-repeat 25% bottom; }
+.screen06.now {
+    background: url(../images/06-bg.png) no-repeat 100% bottom;
+    transition: background 1s linear 1s;
+}
+.screen06 .cloud{
+    position: absolute;
+    top: -50px;
+    left: 0;
+}
+.screen06 .cloud img:first-child{
+    animation: cloud06 20s linear infinite alternate;
+}
+.screen06 .cloud img:last-child{
+    position: absolute;
+    left: 0;
+    top: 0;
+    animation: cloud06 15s linear infinite alternate;
+}
+@-webkit-keyframes cloud06 {
+    from {  }
+    to { 
+        transform: translateX(1000px);
+     }
+}
+
+.screen06 .box{
+    position: absolute;
+    left: 140px;
+    top:150px;
+    z-index: 1002;
+}
+.screen06 .box.show {
+    animation: box 1.8s linear ;
+    opacity: 0;
+}
+@keyframes box {
+    from{
+        transform: translateX(-500px);
+        opacity: 1;
+    }
+    50%{
+        transform: none;
+    }
+    to{
+        transform:translateY(330px) scale(0.3);
+        opacity: 1;
+    }
+}
+.screen06 .text{
+    position: absolute;
+    left: 140px;
+    top: 80px;
+}
+.screen06 .text img:last-child{
+    opacity: 0;
+    left: 0;
+    top: 0px;
+    position: absolute;
+}
+.screen06.now .text img:first-child{
+    opacity: 0;
+    transition: all 0.1s linear 4.6s;
+}
+.screen06.now .text img:last-child{
+    opacity: 1;
+    transition: all 0.1s linear 4.6s;
+}
+.screen06 .car{
+    position: absolute;
+    bottom: 0;
+    left: 100px;
+    z-index: 1003;
+    width: 221px;
+    height: 122px;
+}
+.screen06 .car img{
+    opacity: 0;
+    position: absolute;
+}
+.screen06 .car .carImg{
+    opacity: 1;
+    position: relative;
+}
+.screen06 .car .buyer{
+    opacity: 1;
+    bottom: 170px;
+    left: 170px;
+    position: relative;
+}
+.screen06 .car .address{
+    left: 160px;
+    top:-50px;
+}
+.screen06 .car .say{
+    right: -280px;
+    top:-400px;
+}
+.screen06 .car .worker{
+    left: 0;
+    bottom:0;
+    transform: scale(0);
+    opacity: 1;
+    transform-origin: left bottom;
+}
+.screen06.now .car .buyer{
+    transition: all .1s 1.7s;
+    opacity: 0;
+}
+.screen06.now .car .address{
+    transition: all .25s 1.75s;
+    opacity: 1;
+}
+.screen06.now .car .say{
+    transition: all .2s 1.5s;
+}
+.screen06.now .car .say{
+    transition: opacity .5s 2.2s;
+    opacity: 1;
+}
+.screen06.now .car .worker{
+    animation: worker 2s linear 2s forwards;
+}
+@keyframes worker {
+    from{
+        opacity: 1;
+    }
+    33.3%{
+        transform: scale(1);
+    }
+    66.7%{
+        transform: scale(1) translateY(-100px);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1) translateY(-100px) translateX(200px);
+    }
+}
+
+.screen06 .person{
+    position: absolute;
+    right: 50px;
+    bottom: 100px;
+}
+.screen06 .person .personImg{
+    transform: scale(0);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform-origin: right bottom;
+    z-index: 1;
+}
+.screen06 .person .door{
+    opacity: 0;
+    position: absolute;
+    right: 0px;
+    bottom: 16px;
+}
+.screen06.now .person .personImg{
+   transform: none;
+   right: 150px;
+   transition: transform .5s linear 4s,right .5s linear 5s;
+}
+.screen06.now .person .door{
+    opacity: 1;
+    transition: all .2s linear 4s;
+}
+
+.screen07{
+    background: url("../images/07-bg.png") no-repeat center bottom;
+}
+.screen07 .star{
+    position: absolute;
+    left: 157px;
+    top: 141px;
+}
+.screen07 .star img{
+    float: left;
+    margin-right: 6px;
+    opacity: 0;
+}
+.screen07 .star.show img{
+    opacity: 1;
+    transition: all 0.3s linear; 
+}
+.screen07 .text{
+    position: absolute;
+    left: 157px;
+    top: 171px;
+}
+.screen07 .text img{
+    opacity: 0;
+    transform: scale(0);
+}
+.screen07 .text.show img{
+    opacity: 1;
+    transform: scale(1.2);
+    transition: opacity .3s linear 2s, transform .3s linear 2s; 
+}
+
+
+.screen08{ background: url("../images/08-bg.png");}
+.screen08 .btn{
+    position: absolute;
+    width: 389px;
+    height: 160px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.screen08 .btn img:last-child{
+    position: absolute;
+    opacity: 0;
+    left: 0;
+    top: 0;
+}
+.screen08 .btn:hover img:last-child{
+    opacity: 1;
+}
+.screen08 .again{
+    position: absolute;
+    right: 0;
+    top: 80px;
+}
+.screen08 .hand{
+    position: absolute;
+    left: 50%;
+    top: 100px;
+    transform: translateX(-50%);
+}

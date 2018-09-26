@@ -1,0 +1,135 @@
+html,body{
+	height: 100%;
+}
+.jd_layout{
+	width: 100%;
+	height: 100%;
+}
+.jd_layout .jd_topBar{
+	width: 100%;
+	height:45px;
+	border-bottom: 1px solid #ccc;
+	background: url("../images/header-bg.png") 0 0 / 1px 44px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1;
+}
+.jd_topBar a{
+	width: 40px;
+    height: 44px;
+    padding: 12px 10px;
+    position: absolute;
+    top: 0;
+    /*让背景从内容开始平铺*/
+    background-origin: content-box;
+    /*没有做背景裁剪 背景图默认就是从边框显示*/
+    /*默认的就是
+    border-box  边框以外被裁剪掉
+    padding-box 内边距以外被裁剪掉
+    content-box 内容以外被裁剪掉
+    */
+    background-clip: content-box;
+} 
+.jd_topBar .icon-back{
+	background-position: -20px 0;
+	left: 0;
+}
+.jd_topBar .icon-menu{
+	background-position: -60px 0;
+	right: 0;
+}
+.jd_topBar form{
+	width: 100%;
+	padding: 0 40px;
+}
+.jd_topBar form input{
+	width: 100%;
+	border:1px solid #ccc;
+	border-radius: 4px;
+	height: 30px;
+	margin-top: 7px;
+	padding: 0 10px;
+}
+.jd_main {
+	width: 100%;
+    height: 100%;
+    padding-top: 45px;
+}
+.jd_main .jd_cateLeft{
+	float: left;
+	width: 90px;
+	height: 100%;
+	overflow: hidden;
+}
+.jd_cateLeft ul{
+	width: 100%;
+}
+.jd_cateLeft ul li{
+	text-align: center;
+	font-size:12px;
+	border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    background: #f3f4f5;
+    line-height: 50px;
+    height: 50px;
+    width: 100%;
+}
+.jd_cateLeft ul li a{
+	display: block;
+	width: 100%;
+}
+.jd_cateLeft ul li.now{
+	background: #fff;
+	border:none;	
+}
+.jd_cateLeft ul li.now a{
+	color: #d8505c;
+}
+.jd_cateRight{
+ 	overflow: hidden;
+    height: 100%;
+}
+
+.jd_cateRight_box{
+    width: 101%;
+    padding: 0 10px;
+}
+.jd_cateRight_box .banner{
+	width: 100%;
+	margin-top: 10px;
+	display: block;
+}
+.jd_cateRight_box .banner img{
+	width: 100%;
+	display: block;
+}
+.jd_cateRight_box .hot{
+	margin-top: 10px;
+}
+.jd_cateRight_box .hot h3{
+	font-size: 12px;
+}
+.jd_cateRight_box .hot ul{
+	width: 100%;
+}
+.jd_cateRight_box .hot ul li{
+	width: 33.33%;
+	float: left;
+	padding-top: 5px;
+}
+.jd_cateRight_box .hot ul li a{
+	display: block;
+	width: 100%;
+}
+.jd_cateRight_box .hot ul li img{
+	width: 62px;
+    height: 62px;
+    display: block;
+    margin: 0 auto;
+}
+.jd_cateRight_box .hot ul li p{
+	font-size: 12px;
+	text-align: center;
+	padding: 5px 0; 
+}
